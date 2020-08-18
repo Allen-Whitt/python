@@ -1,3 +1,4 @@
+# Convert text into emojis, just some fun with dictionaries 
 def emojify(msg):
 	words = msg.split(' ')
 	output = ""
