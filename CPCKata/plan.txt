@@ -1,6 +1,8 @@
 FN 1
 input is array of votes and date of election
     Idea: If no input from starting program -> allow user to make array in program
+  get array
+  calculate checksum and vote total
 returns checksum and vote total
 
 FN2 
@@ -9,3 +11,10 @@ alter array so that:
   Ham Burgler Wins
   Vote Count remains the same
   Checksum remains the same
+
+  calculate if changes can be made 
+    both through checksum and vote total
+      this is the hard part... Need to figure out how I am going to do this.
+  make changes 
+
+  return new array
