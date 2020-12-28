@@ -2,12 +2,13 @@ import sys
 import math
 
 electionDate = 12*30-4
-checksum = 0
 voteArr = []
+retArr = []
 def getArray():
   global voteArr
   # If given a string of inputs as command line args, go ahead
-  # Input must be innside of single quote
+  # Input must be comma separated and have no spaces
+    # Capitalization does not matter
   if len(sys.argv) > 1:
     # Make sure it's a valid array
     if any(elem.upper() not in ['R','B'] for elem in sys.argv[1].split(',')):
@@ -26,20 +27,24 @@ def getArray():
         break
       else:
         print('Sorry, McDonaldland, being a true dictatorship, you may not have write in votes.')
+  return voteArr
 
 def calculateChecksum():
   accum = 0
-  global checksum
   for vote in voteArr:
     if vote.upper() == 'R':
       accum += 82
     else:
       accum += 66
     
-  checksum = math.modf(accum/electionDate)[0]
-      
+  return int(str(math.modf(accum/electionDate)[0])[2:])
 
+# sending the data to the vote counters (So it can be intercepted)    
+def sendData():
+  a = getArray()
+  retArr.append(a)
+  retArr.append(len(a))
+  retArr.append(calculateChecksum())
+  return retArr
 
-getArray()
-calculateChecksum()
-print(voteArr)
+print(sendData())
