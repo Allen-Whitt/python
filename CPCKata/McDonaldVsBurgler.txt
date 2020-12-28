@@ -1,0 +1,70 @@
+Ronald McDonald is in trouble. He is winning the election against Ham Burgler!
+
+But he is winning so why is he in trouble you ask? 
+
+Well you see, Mr. Burgler has hired you to hack into the voting systems in a few key states and alter the results, but without being detected.
+
+The good news is voting machines are so insecure they are easy to hack. 
+The voting machines use a simple checksum-ish method to ensure data integrity. When a voter submits their ballot the following things occur:
+
+1) The first letter of the candidates last name gets added to an array.
+  
+  	['M','B']
+
+2) The vote count is incremented
+
+  	Total votes: 2
+
+3) The character code of the first letter of the last name is added to the previous checksum value. 
+
+	B = 066
+	R = 082
+
+	0 + 066 = 66
+
+Then that value is divided by a secret key with the remainder being stored as the new checksum.
+
+    66 / ???? = XXXX.314
+
+	new checksum is 314
+
+After the election is over the Elections Department counts the values in the array in #1 to see who won 
+Then they ensure the count and checksum matches.
+
+The developers of the election software accidentally left the "secret key" on a GitHub public repo. A quick glance at the code suggests that it is based on the date of the election.
+	
+	var secret_key = (monthIndex * dayIndex) - dayOfWeekIndex
+
+    Where January has a month index of 1
+    Sunday has a day of week index of 1
+    Day is the numeric day of the month
+
+    ie. for Nov 3rd 2021 the secret key would be (11*3)-3 = 30
+
+Foriegn hackers working for Mr Burgler have infliltrated the networks of each critical county and can intercept the array from #1 above and modify it in transit. 
+
+This is where you come in.
+
+First build the program that returns the checksum and vote total given an array of votes and the date of the election
+
+Then your job is to create another function that will alter that array in such a way as to both ensure Ham Burgler wins and that the values from #2 and #3 are maintained so that poll watchers won't be able to detect the fraud. 
+
+If you are successful Mr. Burgler promises to make you Minister of Voter Fraud Organization (a new governmental organization that is charged with protecting the integrity of our elections).  
+
+Submission Instructions:
+
+Let us know your deadline before you begin (date of the election)
+
+If anything isn't clear about the requirements ask questions before you begin.
+
+Use your favorite language / framework and include instructions for running and building if necessary
+
+Code your submission and post it to your public GitHub account
+
+Commit often
+
+Once completed share the github link with us
+
+We will pull down the code and build/run the program and see if we can thwart our own mock election. 
+
+

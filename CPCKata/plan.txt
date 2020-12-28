@@ -1,0 +1,11 @@
+FN 1
+input is array of votes and date of election
+    Idea: If no input from starting program -> allow user to make array in program
+returns checksum and vote total
+
+FN2 
+input is that same array and election date
+alter array so that:
+  Ham Burgler Wins
+  Vote Count remains the same
+  Checksum remains the same
