@@ -18,7 +18,7 @@ The voting machines use a simple checksum-ish method to ensure data integrity. W
 3) The character code of the first letter of the last name is added to the previous checksum value. 
 
 	B = 066
-	R = 082
+	R = 082 ( I think this is supposed to be 'M')
 
 	0 + 066 = 66
 

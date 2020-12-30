@@ -1,17 +1,16 @@
 import sys
 import math
 
-electionDate = 12*30-4
+electionDate = 12*30-4 # 356
 voteArr = []
 retArr = []
 def getArray():
   global voteArr
   # If given a string of inputs as command line args, go ahead
   # Input must be comma separated and have no spaces
-    # Capitalization does not matter
   if len(sys.argv) > 1:
     # Make sure it's a valid array
-    if any(elem.upper() not in ['R','B'] for elem in sys.argv[1].split(',')):
+    if any(elem.upper() not in ['M','B'] for elem in sys.argv[1].split(',')):
       print('Given list of votes contains impropper votes')
       quit()
     voteArr = sys.argv[1].split(',')
@@ -21,7 +20,7 @@ def getArray():
       # let the user input a value
       print("Enter Vote ('Q' to terminate'): ")
       x = input()
-      if len(x) == 1 and str(x.upper()) in ['R','B']:
+      if len(x) == 1 and str(x.upper()) in ['M','B']:
         voteArr.append(x.upper())
       elif x.upper() == 'Q':
         break
@@ -32,7 +31,7 @@ def getArray():
 def calculateChecksum():
   accum = 0
   for vote in voteArr:
-    if vote.upper() == 'R':
+    if vote.upper() == 'M':
       accum += 82
     else:
       accum += 66
@@ -41,9 +40,9 @@ def calculateChecksum():
 
 # sending the data to the vote counters (So it can be intercepted)    
 def sendData():
-  a = getArray()
-  retArr.append(a)
-  retArr.append(len(a))
+  getArray()
+  retArr.append(voteArr)
+  retArr.append(len(voteArr))
   retArr.append(calculateChecksum())
   return retArr
 
